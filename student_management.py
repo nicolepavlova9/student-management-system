@@ -1,4 +1,6 @@
-students = {}
+students = {1: {'name': 'Nicole', 'age': 23, 'grade': 5.5, 'subjects': ['Math', ' History']},
+            2: {'name': 'Nicole', 'age': 23, 'grade': 5.5, 'subjects': ['Math', ' History']},
+            3: {'name': 'HelloTest', 'age': 10, 'grade': 3.4, 'subjects': ['Test1', ' Test2']}}
 
 
 def add_student(name, age, grade, subjects):
@@ -12,6 +14,16 @@ def add_student(name, age, grade, subjects):
 
     new_student = {'name': name, 'age': age, 'grade': grade, 'subjects': subjects}
     students[current_key] = new_student
+
+
+add_student('TestA', 23, 5.5, ['TestB', 'TestC'])
+
+
+def does_student_exist(name):
+    for key, value in students.items():
+        if value['name'] == name:
+            return True
+        return False
 
 
 def update_student(name):
@@ -78,7 +90,6 @@ def main():
             subjects = input("Enter student's subjects (comma-separated): ").split(',')
             # Call the add_student function
             add_student(name, age, grade, subjects)
-            print(students)
         elif choice == '2':
             # Prompt for student name to update
             name = input("Enter student's name to update: ")
@@ -103,7 +114,6 @@ def main():
         else:
             print("Invalid choice, please try again.")
 
-
 #
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()

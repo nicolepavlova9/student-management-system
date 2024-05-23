@@ -1,5 +1,5 @@
 students = {1: {'name': 'Nicole', 'age': 23, 'grade': 5.5, 'subjects': ['Math', ' History']},
-            2: {'name': 'Nicole', 'age': 23, 'grade': 5.5, 'subjects': ['Math', ' History']},
+            2: {'name': 'Ivailo', 'age': 23, 'grade': 5.5, 'subjects': ['Math', ' History']},
             3: {'name': 'HelloTest', 'age': 10, 'grade': 3.4, 'subjects': ['Test1', ' Test2']}}
 
 
@@ -11,12 +11,8 @@ def add_student(name, age, grade, subjects):
     else:
         # Otherwise, use the next key by incrementing the last key
         current_key = list(students)[-1] + 1
-
     new_student = {'name': name, 'age': age, 'grade': grade, 'subjects': subjects}
     students[current_key] = new_student
-
-
-add_student('TestA', 23, 5.5, ['TestB', 'TestC'])
 
 
 def update_student(name):
@@ -32,18 +28,21 @@ def update_student(name):
                 students[key]['name'] = new_name
                 break
         if not student_found:
-            print('Student not found!')
+            print('\nStudent not found!')
         break
 
 
 def delete_student(name):
-    """
-    Delete a student record based on the student's name.
-    Args:
-    - name (str): The name of the student to delete.
-    """
-    # Check if the student exists
-    # Code to delete the student's record
+    student_found = None
+    while True:
+        for key, value in students.items():
+            if value['name'] == name:
+                student_found = True
+                students.pop(key)
+                break
+        if not student_found:
+            print('\nStudent not found!')
+        break
 
 
 def search_student(name):
@@ -115,5 +114,5 @@ def main():
 
 
 #
-# if __name__ == "__main__":
-#     main()
+if __name__ == "__main__":
+    main()

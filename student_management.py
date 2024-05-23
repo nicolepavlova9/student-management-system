@@ -17,42 +17,39 @@ def add_student(name, age, grade, subjects):
 
 def update_student(name):
     student_found = None
-    while True:
-        for key, value in students.items():
-            if value['name'] == name:
-                student_found = True
-                new_name = input('Choose a new name: ')
-                if len(new_name) < 1:
-                    print("Name can't be empty.")
-                    break
-                students[key]['name'] = new_name
+    for key, value in students.items():
+        if value['name'] == name:
+            student_found = True
+            new_name = input('Choose a new name: ')
+            if len(new_name) < 1:
+                print("Name can't be empty.")
                 break
-        if not student_found:
-            print('\nStudent not found!')
-        break
+            students[key]['name'] = new_name
+            break
+    if not student_found:
+        print('\nStudent not found!')
 
 
 def delete_student(name):
     student_found = None
-    while True:
-        for key, value in students.items():
-            if value['name'] == name:
-                student_found = True
-                students.pop(key)
-                break
-        if not student_found:
-            print('\nStudent not found!')
-        break
+    for key, value in students.items():
+        if value['name'] == name:
+            student_found = True
+            students.pop(key)
+            break
+    if not student_found:
+        print('\nStudent not found!')
 
 
 def search_student(name):
-    """
-    Search for a student by name and return their record.
-    Args:
-    - name (str): The name of the student to search for.
-    """
-    # Check if the student exists
-    # Code to return the student's record
+    pass
+    # student_found = None
+    # for key, value in students.items():
+    #     if value['name'] == name:
+    #         student_found = True
+    #         break
+    # if not student_found:
+    #     print('No student found.')
 
 
 def list_all_students():

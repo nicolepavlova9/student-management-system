@@ -19,22 +19,21 @@ def add_student(name, age, grade, subjects):
 add_student('TestA', 23, 5.5, ['TestB', 'TestC'])
 
 
-def does_student_exist(name):
-    for key, value in students.items():
-        if value['name'] == name:
-            return True
-        return False
-
-
 def update_student(name):
-    """
-    Update an existing student record.
-    Args:
-    - name (str): The name of the student whose record is to be updated.
-    """
-    # Check if the student exists
-    # Prompt the user to update fields and keep current values if fields are empty
-    # Code to update the student's record
+    student_found = None
+    while True:
+        for key, value in students.items():
+            if value['name'] == name:
+                student_found = True
+                new_name = input('Choose a new name: ')
+                if len(new_name) < 1:
+                    print("Name can't be empty.")
+                    break
+                students[key]['name'] = new_name
+                break
+        if not student_found:
+            print('Student not found!')
+        break
 
 
 def delete_student(name):
@@ -113,6 +112,7 @@ def main():
             break
         else:
             print("Invalid choice, please try again.")
+
 
 #
 # if __name__ == "__main__":

@@ -1,16 +1,17 @@
-student = {}
+students = {}
 
 
 def add_student(name, age, grade, subjects):
-    """
-    Add a new student record.
-    Args:
-    - name (str): The name of the student.
-    - age (int): The age of the student.
-    - grade (float): The grade of the student.
-    - subjects (list of str): The subjects the student is enrolled in.
-    """
-    # Code to add a new student record
+    # Determine the next key for the new student
+    # If the students dictionary is empty, start with key 1
+    if not students:
+        current_key = 1
+    else:
+        # Otherwise, use the next key by incrementing the last key
+        current_key = list(students)[-1] + 1
+
+    new_student = {'name': name, 'age': age, 'grade': grade, 'subjects': subjects}
+    students[current_key] = new_student
 
 
 def update_student(name):
@@ -77,6 +78,7 @@ def main():
             subjects = input("Enter student's subjects (comma-separated): ").split(',')
             # Call the add_student function
             add_student(name, age, grade, subjects)
+            print(students)
         elif choice == '2':
             # Prompt for student name to update
             name = input("Enter student's name to update: ")
@@ -102,5 +104,6 @@ def main():
             print("Invalid choice, please try again.")
 
 
+#
 if __name__ == "__main__":
     main()

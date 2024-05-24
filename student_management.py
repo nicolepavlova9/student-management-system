@@ -19,7 +19,7 @@ def add_student(name, age, grade, subjects):
 def update_student(name):
     student_found = False
     for key, value in students.items():
-        if value['name'] == name:
+        if value['name'].lower() == name.lower():
             student_found = True
             print('\nChoose your option:')
             print('1. Update Name')
@@ -47,7 +47,7 @@ def update_student(name):
 def delete_student(name):
     student_found = False
     for key, value in students.items():
-        if value['name'] == name:
+        if value['name'].lower() == name.lower():
             student_found = True
             students.pop(key)
             break
@@ -58,7 +58,7 @@ def delete_student(name):
 def search_student(name):
     student_found = False
     for key, value in students.items():
-        if value['name'] == name:
+        if value['name'].lower() == name.lower():
             student_found = True
             print(f'Student name: {students[key]["name"]}')
             print(f'Student age: {students[key]["age"]}')

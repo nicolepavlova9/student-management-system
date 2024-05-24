@@ -1,7 +1,6 @@
 students = {1: {'name': 'Nicole', 'age': 23, 'grade': 5.5, 'subjects': ['Math', ' History']},
-            2: {'name': 'Ivailo', 'age': 23, 'grade': 5.5, 'subjects': ['Math', ' History']},
-            3: {'name': 'HelloTest', 'age': 10, 'grade': 3.4, 'subjects': ['Test1', ' Test2']},
-            4: {'name': 'Nicole', 'age': 10, 'grade': 3.4, 'subjects': ['Test1', ' Test2']}}
+            2: {'name': 'HelloTest', 'age': 10, 'grade': 3.4, 'subjects': ['Test1', ' Test2']},
+            3: {'name': 'Stefan', 'age': 10, 'grade': 3.4, 'subjects': ['Test1', ' Test2']}}
 
 
 def add_student(name, age, grade, subjects):
@@ -17,7 +16,7 @@ def add_student(name, age, grade, subjects):
 
 
 def update_student(name):
-    student_found = None
+    student_found = False
     for key, value in students.items():
         if value['name'] == name:
             student_found = True
@@ -45,7 +44,7 @@ def update_student(name):
 
 
 def delete_student(name):
-    student_found = None
+    student_found = False
     for key, value in students.items():
         if value['name'] == name:
             student_found = True
@@ -56,14 +55,18 @@ def delete_student(name):
 
 
 def search_student(name):
-    pass
-    # student_found = None
-    # for key, value in students.items():
-    #     if value['name'] == name:
-    #         student_found = True
-    #         break
-    # if not student_found:
-    #     print('No student found.')
+    student_found = False
+    for key, value in students.items():
+        if value['name'] == name:
+            student_found = True
+            print(f'Student name: {students[key]["name"]}')
+            print(f'Student age: {students[key]["age"]}')
+            print(f'Student grade: {students[key]["grade"]}')
+            print(f'Student subjects:', ', '.join(subject.strip() for subject in value['subjects']))
+    if not student_found:
+        print('No student found.')
+
+
 
 
 def list_all_students():
@@ -122,7 +125,6 @@ def main():
             break
         else:
             print("Invalid choice, please try again.")
-
 
 #
 # if __name__ == "__main__":

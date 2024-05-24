@@ -1,16 +1,8 @@
-students = {1: {'name': 'Nicole', 'age': 23, 'grade': 5.5, 'subjects': ['Math', ' History']},
-            2: {'name': 'HelloTest', 'age': 10, 'grade': 3.4, 'subjects': ['Test1', ' Test2']},
-            3: {'name': 'Stefan', 'age': 10, 'grade': 3.4, 'subjects': ['Test1', ' Test2']}}
+students = {}
 
 
 def add_student(name, age, grade, subjects):
-    # Determine the next key for the new student
-    # If the students dictionary is empty, start with key 1
-    if not students:
-        current_key = 1
-    else:
-        # Otherwise, use the next key by incrementing the last key
-        current_key = list(students)[-1] + 1
+    current_key = max(students.keys(), default=0) + 1
     new_student = {'name': name, 'age': age, 'grade': grade, 'subjects': subjects}
     students[current_key] = new_student
 
@@ -160,7 +152,6 @@ def main():
             print("Invalid choice, please try again.")
 
 
-print(students)
 #
 if __name__ == "__main__":
     main()

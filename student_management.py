@@ -1,6 +1,7 @@
 students = {1: {'name': 'Nicole', 'age': 23, 'grade': 5.5, 'subjects': ['Math', ' History']},
             2: {'name': 'Ivailo', 'age': 23, 'grade': 5.5, 'subjects': ['Math', ' History']},
-            3: {'name': 'HelloTest', 'age': 10, 'grade': 3.4, 'subjects': ['Test1', ' Test2']}}
+            3: {'name': 'HelloTest', 'age': 10, 'grade': 3.4, 'subjects': ['Test1', ' Test2']},
+            4: {'name': 'Nicole', 'age': 10, 'grade': 3.4, 'subjects': ['Test1', ' Test2']}}
 
 
 def add_student(name, age, grade, subjects):
@@ -20,14 +21,27 @@ def update_student(name):
     for key, value in students.items():
         if value['name'] == name:
             student_found = True
-            new_name = input('Choose a new name: ')
-            if len(new_name) < 1:
-                print("Name can't be empty.")
-                break
-            students[key]['name'] = new_name
+            print('\nChoose your option:')
+            print('1. Update Name')
+            print('2. Update Age')
+            print('3. Update Grade')
+            print('4. Update Subjects')
+            option = int(input('Enter the number of the option you want to update: '))
+            if option == 1:
+                new_name = input('Choose a new name: ')
+                students[key]['name'] = new_name
+            elif option == 2:
+                new_age = int(input('Choose the new age: '))
+                students[key]['age'] = new_age
+            elif option == 3:
+                new_grade = float(input('Choose the new grade: '))
+                students[key]['grade'] = new_grade
+            elif option == 4:
+                new_subjects = input("Enter the new subjects, separated by commas: ").split(',')
+                students[key]['subjects'] = new_subjects
             break
     if not student_found:
-        print('\nStudent not found!')
+        print('Student not found!')
 
 
 def delete_student(name):
@@ -111,5 +125,5 @@ def main():
 
 
 #
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()

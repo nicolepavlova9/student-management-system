@@ -67,14 +67,17 @@ def search_student(name):
         print('No student found.')
 
 
-
-
 def list_all_students():
-    """
-    List all student records.
-    """
-    # Check if there are any student records
-    # Code to list all students
+    if not students:
+        print('No students found.')
+    else:
+        for key, value in students.items():
+            print('\n----------')
+            print(f'Student name: {students[key]["name"]}')
+            print(f'Student age: {students[key]["age"]}')
+            print(f'Student grade: {students[key]["grade"]}')
+            print(f'Student subjects:', ', '.join(subject.strip() for subject in value['subjects']))
+            print('----------')
 
 
 def main():
@@ -126,6 +129,7 @@ def main():
         else:
             print("Invalid choice, please try again.")
 
+
 #
-# if __name__ == "__main__":
-#     main()
+if __name__ == "__main__":
+    main()

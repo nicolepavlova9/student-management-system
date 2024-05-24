@@ -27,19 +27,46 @@ def update_student(name):
             print('4. Update Subjects')
             option = int(input('Enter the number of the option you want to update: '))
             if option == 1:
-                new_name = input('Choose a new name: ')
-                students[key]['name'] = new_name
+                try:
+                    new_name = input('Choose a new name: ')
+                    if new_name.isalpha():
+                        students[key]['name'] = new_name
+                        print(f"Name updated to {new_name}")
+                    else:
+                        raise ValueError('\nInvalid name. Names must contain only alphabetic characters.')
+                except ValueError as error_message:
+                    print(error_message)
             elif option == 2:
-                new_age = int(input('Choose the new age: '))
-                students[key]['age'] = new_age
+                try:
+                    new_age = input('Choose the new age: ')
+                    if new_age.isdigit() and 0 < int(new_age) < 99:
+                        students[key]['age'] = new_age
+                        print(f'Student {students[key]["name"]} age changed to {new_age}')
+                    else:
+                        raise ValueError('\nInvalid age, please use only a positive number and no bigger than 99.')
+                except ValueError as error_message:
+                    print(error_message)
             elif option == 3:
-                new_grade = float(input('Choose the new grade: '))
-                students[key]['grade'] = new_grade
+                try:
+                    new_grade = float(input('Choose the new grade: '))
+                    if 2.0 <= new_grade <= 6.0:
+                        students[key]['grade'] = new_grade
+                        print(f'Student {students[key]["name"]} grade changed to {new_grade}')
+                    else:
+                        print('\nInvalid grade. Please use only numbers from 2.00 to 6.00')
+                except ValueError:
+                    print('\nInvalid input. Please enter a numeric value for the grade.')
             elif option == 4:
-                new_subjects = input("Enter the new subjects, separated by commas: ").split(',')
-                students[key]['subjects'] = new_subjects
+                new_subjects_input = input("Enter the new subjects, separated by commas: ")
+                new_subjects = [subject.strip() for subject in new_subjects_input.split(',')]
+                if all(subject.isalpha() for subject in new_subjects) and new_subjects:
+                    students[key]['subjects'] = new_subjects
+                    print(f"Subjects updated to: {', '.join(new_subjects)}")
+                else:
+                    print(
+                        '\nInvalid subjects. Each subject must contain only alphabetic characters and cannot be empty.')
             else:
-                print('\nInvalid option.')
+                print('Invalid option.')
     if not student_found:
         print('\nStudent not found!')
 

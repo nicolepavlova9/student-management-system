@@ -1,4 +1,3 @@
-# Currently, values added for testing
 students = {1: {'name': 'Nicole', 'age': 23, 'grade': 5.5, 'subjects': ['Math', ' History']},
             2: {'name': 'HelloTest', 'age': 10, 'grade': 3.4, 'subjects': ['Test1', ' Test2']},
             3: {'name': 'Stefan', 'age': 10, 'grade': 3.4, 'subjects': ['Test1', ' Test2']}}
@@ -39,9 +38,10 @@ def update_student(name):
             elif option == 4:
                 new_subjects = input("Enter the new subjects, separated by commas: ").split(',')
                 students[key]['subjects'] = new_subjects
-            break
+            else:
+                print('\nInvalid option.')
     if not student_found:
-        print('Student not found!')
+        print('\nStudent not found!')
 
 
 def delete_student(name):
@@ -60,12 +60,14 @@ def search_student(name):
     for key, value in students.items():
         if value['name'].lower() == name.lower():
             student_found = True
+            print('\n----------')
             print(f'Student name: {students[key]["name"]}')
             print(f'Student age: {students[key]["age"]}')
             print(f'Student grade: {students[key]["grade"]}')
             print(f'Student subjects:', ', '.join(subject.strip() for subject in value['subjects']))
+            print('----------')
     if not student_found:
-        print('No student found.')
+        print('\nStudent not found!')
 
 
 def list_all_students():
@@ -131,6 +133,7 @@ def main():
             print("Invalid choice, please try again.")
 
 
+print(students)
 #
 if __name__ == "__main__":
     main()
